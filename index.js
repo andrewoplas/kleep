@@ -9,6 +9,7 @@ const contextMenu = require("electron-context-menu");
 const config = require("./config");
 
 const appPath = "/app";
+const mainPage = "login";
 
 unhandled();
 debug();
@@ -24,8 +25,9 @@ const createMainWindow = async () => {
 	const win = new BrowserWindow({
 		title: app.name,
 		show: false,
-		width: 600,
-		height: 400
+		width: 700,
+		height: 600,
+		backgroundColor: "#f4f8ff"
 	});
 
 	win.on("ready-to-show", () => {
@@ -38,7 +40,7 @@ const createMainWindow = async () => {
 		mainWindow = undefined;
 	});
 
-	await win.loadFile(path.join(__dirname, appPath + "/index.html"));
+	await win.loadFile(path.join(__dirname, `${appPath}/${mainPage}.html`));
 
 	return win;
 };
