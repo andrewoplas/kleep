@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Kleep - Login</title>
+
+		<!-- Custom CSS -->
+		<link rel="stylesheet" href="./resources/css/normalize.css" />
+		<link rel="stylesheet" href="./resources/css/login.css" />
+	</head>
+
+	<body>
+		<div class="Login Content">
+			<div class="Box">
+				<img class="logo" src="resources/assets/icons/box.svg" />
+				<h3 class="header text-blue">Welcome!</h3>
+				<p class="description">
+					Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+					nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
+					volutpat. Ut wisi enim ad minim veniam, quis nos
+				</p>
+
+				<div class="form">
+					<input type="email" class="input" id="email" placeholder="Email ID" />
+					<input
+						type="password"
+						class="input"
+						id="password"
+						placeholder="Password"
+					/>
+					<button class="btn-submit bg-blue" id="login">Log In</button>
+				</div>
+
+				<div class="details">
+					<div class="Checkbox">
+						<label>
+							<input type="checkbox" id="keep-me-signed-in" />
+							<span></span>
+							Keep me signed in
+						</label>
+					</div>
+
+					<a class="link text-blue" href="javascript:void(0)">
+						Forgot Password?
+					</a>
+				</div>
+
+				<div class="not-a-member-container">
+					<a class="link text-blue" href="javascript:void(0)">
+						Not a member?
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Vendor JS -->
+		<script src="./resources/js/jquery.min.js"></script>
+
+		<!-- Custom JS -->
+		<script src="./resources/js/main.js"></script>
+		<script>
+			initializeLogin();
+		</script>
+	</body>
+</html>

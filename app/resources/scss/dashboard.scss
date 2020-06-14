@@ -1,0 +1,359 @@
+// Main
+@import "main.scss";
+
+// Components
+@import "components/box";
+@import "components/switch";
+@import "components/circular-checkbox";
+@import "components/dropdown-menu";
+@import "components/snackbar";
+
+.Main {
+	padding: 30px 40px 10px;
+	min-width: 100%;
+	min-height: 100%;
+	background-color: $background;
+
+	.header {
+		width: 100%;
+		@include flex($align-items: flex-end);
+
+		.logo {
+			flex: 1;
+		}
+
+		.configuration {
+			margin-right: 80px;
+
+			.switch-container {
+				@include flex(stretch, center);
+				margin-left: 10px;
+
+				.Switch {
+					width: 35px;
+					height: 17px;
+					margin: 0 8px;
+
+					.slider {
+						&:before {
+							height: 12px;
+							width: 12px;
+							left: 3px;
+							bottom: 2px;
+						}
+					}
+
+					input:checked + .slider:before {
+						-webkit-transform: translateX(14px);
+						-ms-transform: translateX(14px);
+						transform: translateX(14px);
+					}
+				}
+
+				.switch-value {
+					@include font($size: 15px);
+					opacity: 0.8;
+				}
+			}
+
+			.kleeboard {
+				@include font($size: 18px);
+				margin-top: 10px;
+				display: block;
+			}
+
+			.date {
+				@include font($size: 13px);
+				margin-top: 2px;
+				display: block;
+				cursor: pointer;
+
+				.arrow-icon {
+					height: 10px;
+					width: 10px;
+					margin-left: 10px;
+				}
+			}
+		}
+
+		.user {
+			.container {
+				@include flex(flex-start, center);
+				border-top-left-radius: 23px;
+				border-bottom-left-radius: 23px;
+				border-top-right-radius: 7px;
+				border-bottom-right-radius: 7px;
+				width: 80px;
+				padding: 6px 8px;
+				background-color: $color-gray;
+				cursor: pointer;
+			}
+
+			.avatar {
+				width: 33px;
+				height: 33px;
+				border: 2px solid white;
+				border-radius: 50%;
+			}
+
+			.arrow-icon {
+				height: 10px;
+				width: 10px;
+				margin-top: 5px;
+				margin-left: 15px;
+			}
+		}
+	}
+
+	.main-content {
+		@include flex(stretch, flex-start);
+		margin-top: 5px;
+
+		.folders {
+			flex-basis: 30%;
+			padding-top: 48px;
+			padding-right: 20px;
+
+			.btn-new-folder {
+				@include button($color-green, white);
+			}
+
+			.list {
+				cursor: pointer;
+				padding-top: 5px;
+
+				.item {
+					margin-top: 15px;
+					@include flex(flex-start, center);
+
+					&.active {
+						.title {
+							padding: 3px 10px;
+							flex: none;
+							background-color: $color-blue;
+							color: white;
+							border-radius: 8px;
+							opacity: 0.8;
+						}
+					}
+
+					.CircularCheckbox label:before {
+						margin-bottom: 0;
+					}
+
+					.title {
+						@include flex(flex-start, center);
+						@include font($size: 20px);
+						color: #a1a1a1;
+						flex: 1;
+
+						img {
+							margin-right: 5px;
+						}
+					}
+				}
+			}
+
+			#folder-bulk-actions {
+				margin-top: 30px;
+
+				.button {
+					background-color: $color-gray;
+				}
+			}
+
+			.btn-settings {
+				@include flex(flex-start, center);
+				@include button(transparent, #858585);
+				@include font($size: 16px);
+				margin-top: 25px;
+				padding: 2px 0;
+				opacity: 1;
+
+				svg {
+					fill: #858585;
+					width: 25px;
+					height: 25px;
+					margin-right: 10px;
+				}
+			}
+		}
+
+		.contents {
+			flex-basis: 70%;
+
+			#search {
+				width: 130px;
+				padding: 4px 10px;
+				background-color: $color-gray;
+				text-align: center;
+				border: 0;
+				border-radius: 20px;
+				outline: 0;
+				@include font($size: 14px);
+
+				&::placeholder {
+					color: $color-black;
+				}
+			}
+
+			.list {
+				margin-top: 15px;
+
+				.item {
+					margin-top: 20px;
+					@include flex(flex-start, center);
+
+					.date {
+						width: 30px;
+
+						.day {
+							@include font($size: 14px);
+							display: block;
+						}
+						.day-number {
+							@include font($size: 30px, $weight: 800);
+							margin: 0;
+							margin-top: -5px;
+							display: block;
+						}
+					}
+
+					.divider {
+						width: 1px;
+						height: 35px;
+						margin: 0 15px 0;
+						background-color: $color-black;
+						opacity: 0.2;
+					}
+
+					.details {
+						.CircularCheckbox label {
+							@include font($size: 20px);
+						}
+					}
+
+					.action-buttons {
+						@include flex();
+						margin-left: auto;
+						flex-shrink: 0;
+						position: relative;
+
+						@mixin action-button {
+							border: 0;
+							border-radius: 4px;
+							margin-left: 5px;
+						}
+
+						.btn-copy {
+							@include action-button;
+							@include button($color-green, white);
+							padding: 2px 15px;
+						}
+
+						.btn-more-settings {
+							@include action-button;
+							@include button($color-blue);
+						}
+
+						.btn-remove {
+							@include action-button;
+							@include button($color-yellow);
+						}
+
+						.dropdown-menu {
+							margin: 0 !important;
+
+							.dropdown-panel {
+								left: 0;
+								z-index: 2;
+							}
+						}
+					}
+				}
+			}
+
+			#content-bulk-actions {
+				margin-top: 25px;
+				margin-left: 62px;
+
+				.button {
+					background-color: $color-blue;
+					color: white;
+				}
+
+				.dropdown-panel {
+					max-width: 200px;
+				}
+			}
+		}
+	}
+}
+
+.cloneable {
+	display: none !important;
+}
+
+#modal-delete-confirmation {
+	width: 300px;
+	padding-left: 25px;
+	padding-right: 25px;
+	background-color: $background;
+	border: 0;
+	box-shadow: none;
+
+	.message {
+		@include font($size: 15px);
+		color: $color-black;
+	}
+
+	.actions {
+		@include flex(center, center);
+
+		.btn-keep {
+			@include button($color-green, white);
+			width: 80px;
+		}
+
+		.btn-delete {
+			@include button($color-yellow, $color-black);
+			margin-left: 30px;
+			width: 80px;
+		}
+	}
+}
+
+#modal-new-folder {
+	width: 300px;
+	padding-left: 25px;
+	padding-right: 25px;
+	background-color: $background;
+	border: 0;
+	box-shadow: none;
+
+	.message {
+		@include font($size: 15px);
+		color: $color-black;
+	}
+
+	.actions {
+		@include flex($align-items: center);
+
+		input {
+			padding: 4px;
+			border-radius: 4px;
+			outline: 0;
+			border: 1px solid $color-gray;
+			flex: 1;
+			@include font($size: 14px);
+		}
+
+		.btn-create {
+			@include button($color-blue, white);
+			height: auto;
+			margin-left: 8px;
+			width: 80px;
+			align-self: stretch;
+		}
+	}
+}
