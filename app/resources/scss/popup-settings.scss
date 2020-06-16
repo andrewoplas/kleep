@@ -5,6 +5,7 @@
 @import "components/box";
 @import "components/content";
 @import "components/switch";
+@import "components/snackbar";
 
 .PopupSettings {
 	@include full-size;
@@ -22,6 +23,7 @@
 			.label {
 				.name {
 					@include font($size: 15px, $weight: bold);
+					@include flex(stretch, center);
 					margin: 0em;
 
 					.alt {
@@ -34,17 +36,32 @@
 					margin: 0;
 					opacity: 0.6;
 				}
+
+				.shortcut-on {
+					@include font($size: 8px, $weight: bold);
+					padding: 2px 9px;
+					background-color: $color-green;
+					margin-left: 8px;
+					border-radius: 9px;
+					color: white;
+					cursor: pointer;
+
+					&.hide {
+						display: none;
+					}
+				}
 			}
 
 			.value {
-				@include font($size: 13px);
+				@include font($size: 12px);
 				display: block;
-				width: 90px;
-				padding: 5px 10px;
+				width: 100px;
+				padding: 5px 8px;
 				margin-left: auto;
 				text-align: center;
 				border-radius: 6px;
 				border: 1px solid rgba(0, 0, 0, 0.2);
+				cursor: pointer;
 
 				&.shortcut {
 					text-align: right;
