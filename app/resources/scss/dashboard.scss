@@ -8,6 +8,12 @@
 @import "components/dropdown-menu";
 @import "components/snackbar";
 
+$green: #39b54a;
+$violet: #662d92;
+$blue: #29abe2;
+$red: #ff0000;
+$yellow: #fcee21;
+
 .Main {
 	padding: 30px 40px 10px;
 	min-width: 100%;
@@ -123,12 +129,13 @@
 				padding-top: 5px;
 
 				.item {
-					margin-top: 15px;
+					margin-top: 10px;
 					@include flex(flex-start, center);
+					padding: 2px 5px;
+					border-radius: 4px;
 
 					&.active {
 						.title {
-							padding: 3px 10px;
 							flex: none;
 							background-color: $color-blue;
 							color: white;
@@ -145,6 +152,7 @@
 						@include flex(flex-start, center);
 						@include font($size: 20px);
 						color: #a1a1a1;
+						padding: 3px 10px;
 						flex: 1;
 
 						img {
@@ -203,6 +211,8 @@
 				.item {
 					margin-top: 20px;
 					@include flex(flex-start, center);
+					padding: 2px 5px;
+					border-radius: 4px;
 
 					.date {
 						width: 30px;
@@ -290,11 +300,19 @@
 	}
 }
 
+.dropdown-menu {
+	.modal-button {
+		@include flex(stretch, center);
+		text-decoration: none;
+		color: $color-black;
+	}
+}
+
 .cloneable {
 	display: none !important;
 }
 
-#modal-delete-confirmation {
+.modal {
 	width: 300px;
 	padding-left: 25px;
 	padding-right: 25px;
@@ -306,7 +324,9 @@
 		@include font($size: 15px);
 		color: $color-black;
 	}
+}
 
+#modal-delete-confirmation {
 	.actions {
 		@include flex(center, center);
 
@@ -324,18 +344,6 @@
 }
 
 #modal-new-folder {
-	width: 300px;
-	padding-left: 25px;
-	padding-right: 25px;
-	background-color: $background;
-	border: 0;
-	box-shadow: none;
-
-	.message {
-		@include font($size: 15px);
-		color: $color-black;
-	}
-
 	.actions {
 		@include flex($align-items: center);
 
@@ -356,4 +364,92 @@
 			align-self: stretch;
 		}
 	}
+}
+
+#modal-color-selection {
+	padding-top: 30px;
+	.colors {
+		@include flex(center, center);
+		transition: 150ms;
+		cursor: pointer;
+
+		div {
+			@include flex(center, center);
+			height: 30px;
+			width: 30px;
+			border-radius: 50%;
+			margin: 0 10px 0;
+
+			img {
+				display: none;
+			}
+
+			&.selected {
+				border: 2px solid #5d6d7e;
+				transition: 150ms;
+
+				img {
+					display: block;
+				}
+			}
+
+			&.green {
+				background-color: $green;
+			}
+			&.violet {
+				background-color: $violet;
+			}
+			&.blue {
+				background-color: $blue;
+			}
+			&.red {
+				background-color: $red;
+			}
+			&.yellow {
+				background-color: $yellow;
+			}
+
+			&:not(.selected):hover {
+				transition: 150ms;
+				opacity: 0.4;
+			}
+		}
+	}
+
+	.actions {
+		@include flex(center, center);
+		margin-top: 30px;
+
+		.btn-cancel {
+			@include button($color-gray, $color-black);
+			width: 80px;
+		}
+
+		.btn-apply {
+			@include button($color-green, white);
+			margin-left: 30px;
+			width: 80px;
+
+			&:disabled {
+				opacity: 0.6;
+				cursor: initial;
+			}
+		}
+	}
+}
+
+.color-green {
+	background-color: $green;
+}
+.color-violet {
+	background-color: $violet;
+}
+.color-blue {
+	background-color: $blue;
+}
+.color-red {
+	background-color: $red;
+}
+.color-yellow {
+	background-color: $yellow;
 }
