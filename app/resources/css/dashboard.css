@@ -461,14 +461,15 @@ body {
   padding-top: 5px;
 }
 .Main .main-content .folders .list .item {
-  margin-top: 15px;
+  margin-top: 10px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: row;
+  padding: 2px 5px;
+  border-radius: 4px;
 }
 .Main .main-content .folders .list .item.active .title {
-  padding: 3px 10px;
   flex: none;
   background-color: #1673ff;
   color: white;
@@ -487,6 +488,7 @@ body {
   font-size: 20px;
   font-weight: 400;
   color: #a1a1a1;
+  padding: 3px 10px;
   flex: 1;
 }
 .Main .main-content .folders .list .item .title img {
@@ -560,6 +562,8 @@ body {
   justify-content: flex-start;
   align-items: center;
   flex-direction: row;
+  padding: 2px 5px;
+  border-radius: 4px;
 }
 .Main .main-content .contents .list .item .date {
   width: 30px;
@@ -685,11 +689,20 @@ body {
   max-width: 200px;
 }
 
+.dropdown-menu .modal-button {
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  flex-direction: row;
+  text-decoration: none;
+  color: #333333;
+}
+
 .cloneable {
   display: none !important;
 }
 
-#modal-delete-confirmation {
+.modal {
   width: 300px;
   padding-left: 25px;
   padding-right: 25px;
@@ -697,12 +710,13 @@ body {
   border: 0;
   box-shadow: none;
 }
-#modal-delete-confirmation .message {
+.modal .message {
   font-family: "Proxima Nova";
   font-size: 15px;
   font-weight: 400;
   color: #333333;
 }
+
 #modal-delete-confirmation .actions {
   display: flex;
   justify-content: center;
@@ -751,20 +765,6 @@ body {
   opacity: 0.7;
 }
 
-#modal-new-folder {
-  width: 300px;
-  padding-left: 25px;
-  padding-right: 25px;
-  background-color: #f4f8ff;
-  border: 0;
-  box-shadow: none;
-}
-#modal-new-folder .message {
-  font-family: "Proxima Nova";
-  font-size: 15px;
-  font-weight: 400;
-  color: #333333;
-}
 #modal-new-folder .actions {
   display: flex;
   justify-content: stretch;
@@ -803,4 +803,127 @@ body {
 #modal-new-folder .actions .btn-create:hover {
   transition: 150ms;
   opacity: 0.7;
+}
+
+#modal-color-selection {
+  padding-top: 30px;
+}
+#modal-color-selection .colors {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  transition: 150ms;
+  cursor: pointer;
+}
+#modal-color-selection .colors div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  margin: 0 10px 0;
+}
+#modal-color-selection .colors div img {
+  display: none;
+}
+#modal-color-selection .colors div.selected {
+  border: 2px solid #5d6d7e;
+  transition: 150ms;
+}
+#modal-color-selection .colors div.selected img {
+  display: block;
+}
+#modal-color-selection .colors div.green {
+  background-color: #39b54a;
+}
+#modal-color-selection .colors div.violet {
+  background-color: #662d92;
+}
+#modal-color-selection .colors div.blue {
+  background-color: #29abe2;
+}
+#modal-color-selection .colors div.red {
+  background-color: #ff0000;
+}
+#modal-color-selection .colors div.yellow {
+  background-color: #fcee21;
+}
+#modal-color-selection .colors div:not(.selected):hover {
+  transition: 150ms;
+  opacity: 0.4;
+}
+#modal-color-selection .actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 30px;
+}
+#modal-color-selection .actions .btn-cancel {
+  font-family: "Proxima Nova";
+  font-size: 15px;
+  font-weight: 400;
+  padding: 2px 10px;
+  color: #333333;
+  background-color: #e6e6e6;
+  border-radius: 4px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  transition: 150ms;
+  text-align: center;
+  text-decoration: none;
+  width: 80px;
+}
+#modal-color-selection .actions .btn-cancel:hover {
+  transition: 150ms;
+  opacity: 0.7;
+}
+#modal-color-selection .actions .btn-apply {
+  font-family: "Proxima Nova";
+  font-size: 15px;
+  font-weight: 400;
+  padding: 2px 10px;
+  color: white;
+  background-color: #26c296;
+  border-radius: 4px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  transition: 150ms;
+  text-align: center;
+  text-decoration: none;
+  margin-left: 30px;
+  width: 80px;
+}
+#modal-color-selection .actions .btn-apply:hover {
+  transition: 150ms;
+  opacity: 0.7;
+}
+#modal-color-selection .actions .btn-apply:disabled {
+  opacity: 0.6;
+  cursor: initial;
+}
+
+.color-green {
+  background-color: #39b54a;
+}
+
+.color-violet {
+  background-color: #662d92;
+}
+
+.color-blue {
+  background-color: #29abe2;
+}
+
+.color-red {
+  background-color: #ff0000;
+}
+
+.color-yellow {
+  background-color: #fcee21;
 }
