@@ -3,6 +3,72 @@
  * Initialization of libraries are also present in this file.
  */
 
+// Usage: For keycode conversion to symbol
+const keyboardMap = {
+	"16": "shift",
+	"17": "ctrl",
+	"18": "alt",
+	"27": "esc",
+	"32": "space",
+	"35": "end",
+	"36": "home",
+	"37": "←",
+	"38": "↑",
+	"39": "→",
+	"40": "↓",
+	"48": "0",
+	"49": "1",
+	"50": "2",
+	"51": "3",
+	"52": "4",
+	"53": "5",
+	"54": "6",
+	"55": "7",
+	"56": "8",
+	"57": "9",
+	"59": ";",
+	"61": "=",
+	"65": "A",
+	"66": "B",
+	"67": "C",
+	"68": "D",
+	"69": "E",
+	"70": "F",
+	"71": "G",
+	"72": "H",
+	"73": "I",
+	"74": "J",
+	"75": "K",
+	"76": "L",
+	"77": "M",
+	"78": "N",
+	"79": "O",
+	"80": "P",
+	"81": "Q",
+	"82": "R",
+	"83": "S",
+	"84": "T",
+	"85": "U",
+	"86": "V",
+	"87": "W",
+	"88": "X",
+	"89": "Y",
+	"90": "Z",
+	"91": "⌘",
+	"173": "-",
+	"186": ";",
+	"187": "=",
+	"188": ",",
+	"189": "-",
+	"190": ".",
+	"191": "/",
+	"192": "`",
+	"219": "[",
+	"220": "\\",
+	"221": "]",
+	"222": "'"
+};
+
 // Usage: For redirecting to different pages
 const page = {
 	LOGIN: "login",
@@ -33,6 +99,28 @@ const data = [
 		description: "Lorem ipsum 5"
 	}
 ];
+
+// Usage: Languages data
+let selectedTimeFormatIndex = 0;
+const languages = ["English", "日本語", "Deutsch", "français"];
+
+// Usage: Date format data
+let selectedDateFormatIndex = 0;
+const dateFormats = [
+	"DD/MM/YY",
+	"DD/MM/YYY",
+	"DD-MM-YY",
+	"DD-MM-YYYY",
+	"MM DD,YYYY"
+];
+
+// Usage: Time format data
+let selectedLanguageIndex = 0;
+const timeFormats = ["12-Hours", "24-Hours"];
+
+// Usage: Toggle hotkey input
+const SETTINGS_HOTKEY_SCOPE = "settings";
+const DEFAULT_HOTKEY_SCOPE = "all";
 
 /**
  * For redirecting to a page. Uses `page` object
@@ -79,6 +167,21 @@ function initializeLogin() {
 }
 
 // Settings
+function hotkeysInitialization(container) {
+	hotkeys("*", SETTINGS_HOTKEY_SCOPE, function(event, handler) {
+		const keys = hotkeys.getPressedKeyCodes();
+		const symbolKeys = keys
+			.filter(keyCode => keyboardMap.hasOwnProperty(keyCode))
+			.map(keyCode => keyboardMap[keyCode]);
+
+		if (symbolKeys.length) {
+			$(container).text(symbolKeys.slice(0, 2).join(" + "));
+		} else {
+			$(container).text("empty");
+		}
+	});
+}
+
 function initializeSettings() {
 	// Event Listener for Ready Button in settings.html
 	$("#ready").click(function() {
@@ -87,6 +190,69 @@ function initializeSettings() {
 
 		// Redirect to Main page
 		redirect(page.MAIN);
+	});
+
+	// Initialize Hotkey listener
+	hotkeysInitialization("#hotkey-value");
+	let snackbarTimeout = null;
+	// Event listener for HotKey
+	$("#hotkey-value").click(function() {
+		clearTimeout(snackbarTimeout);
+
+		// Get snackbar element
+		const snackbar = $("#snackbar");
+
+		// Check if can input keys
+		if (hotkeys.getScope() === DEFAULT_HOTKEY_SCOPE) {
+			hotkeys.setScope(SETTINGS_HOTKEY_SCOPE);
+			snackbar.text("Start Pressing...");
+			$(".shortcut-on").removeClass("hide");
+		} else {
+			hotkeys.setScope(DEFAULT_HOTKEY_SCOPE);
+			snackbar.text("Shortcut Saved!");
+			$(".shortcut-on").addClass("hide");
+		}
+
+		// Add show class
+		snackbar.addClass("show");
+
+		// Hide the snackbar element by removing the show class after 3000ms (3 seconds)
+		snackbarTimeout = setTimeout(function() {
+			snackbar.removeClass("show");
+		}, 3000);
+	});
+
+	// Event listener for Copy Sounds
+	$("#copy-sounds-input").change(function() {
+		const copySoundsValue = $(this).is(":checked");
+		console.log("Copy Sounds", copySoundsValue);
+	});
+
+	// Event listener for Landuage
+	$("#language-input").click(function() {
+		$(this).text(languages[++selectedLanguageIndex % languages.length]);
+		console.log(
+			"Language",
+			languages[selectedLanguageIndex % languages.length]
+		);
+	});
+
+	// Event listener for Date Format
+	$("#date-format-input").click(function() {
+		$(this).text(dateFormats[++selectedDateFormatIndex % dateFormats.length]);
+		console.log(
+			"Date Format",
+			dateFormats[selectedDateFormatIndex % dateFormats.length]
+		);
+	});
+
+	// Event listener for Time Format
+	$("#time-format-input").click(function() {
+		$(this).text(timeFormats[++selectedTimeFormatIndex % timeFormats.length]);
+		console.log(
+			"Time Format",
+			timeFormats[selectedTimeFormatIndex % timeFormats.length]
+		);
 	});
 }
 
@@ -282,7 +448,29 @@ function colorsSelectionModal() {
 }
 
 // Popup Settings
-function initializePopupSettings() {}
+function initializePopupSettings() {
+	initializeSettings();
+
+	// Event listener for Upgrade button
+	$("#upgrade").click(function() {
+		console.log("Upgrade Clicked");
+	});
+
+	// Event listener for Support button
+	$("#support").click(function() {
+		console.log("Support Clicked");
+	});
+}
 
 // Popup User Info
-function initializePopupUserInfo() {}
+function initializePopupUserInfo() {
+	// Event listener for Upgrade button
+	$("#upgrade").click(function() {
+		console.log("Upgrade Clicked");
+	});
+
+	// Event listener for Change buttons
+	$(".change-button").click(function() {
+		console.log("Change", $(this).val());
+	});
+}

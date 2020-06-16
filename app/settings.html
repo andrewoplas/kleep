@@ -27,13 +27,15 @@
 					<!-- Open App Shortcut -->
 					<div class="item">
 						<div class="label">
-							<h3 class="name">Open App Shortcut</h3>
+							<h3 class="name">
+								Open App Shortcut <span class="shortcut-on hide">on</span>
+							</h3>
 							<p class="note">
 								Use this short cut to open up Kleep’s Dashboard
 							</p>
 						</div>
 
-						<span class="value shortcut bg-gray">⌘K</span>
+						<span class="value shortcut bg-gray" id="hotkey-value">⌘ + K</span>
 					</div>
 
 					<!-- Copy Sound -->
@@ -46,7 +48,7 @@
 						</div>
 
 						<label class="Switch">
-							<input type="checkbox" />
+							<input type="checkbox" id="copy-sounds-input" />
 							<span class="slider round"></span>
 						</label>
 					</div>
@@ -57,7 +59,7 @@
 							<h3 class="name">Language</h3>
 						</div>
 
-						<span class="value bg-gray">English</span>
+						<span class="value bg-gray" id="language-input">English</span>
 					</div>
 
 					<!-- Date Format -->
@@ -66,7 +68,7 @@
 							<h3 class="name">Date Format</h3>
 						</div>
 
-						<span class="value bg-gray">DD/MM/YY</span>
+						<span class="value bg-gray" id="date-format-input">DD/MM/YY</span>
 					</div>
 
 					<!-- Time Format -->
@@ -75,17 +77,21 @@
 							<h3 class="name">Time Format</h3>
 						</div>
 
-						<span class="value bg-gray">12 Hours</span>
+						<span class="value bg-gray" id="time-format-input">12 Hours</span>
 					</div>
 				</div>
 
 				<!-- Ready Button -->
 				<button class="btn-submit bg-blue" id="ready">Ready!</button>
 			</div>
+
+			<!-- Snackbar -->
+			<div class="Snackbar" id="snackbar"></div>
 		</div>
 
 		<!-- Vendor JS -->
 		<script src="./resources/js/jquery.min.js"></script>
+		<script src="./resources/vendor/hotkey/hotkey.min.js"></script>
 
 		<!-- Custom JS -->
 		<script src="./resources/js/main.js"></script>
