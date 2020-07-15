@@ -1,5 +1,7 @@
 # Kleep
 
+###### Date: July 15, 2020
+
 ### Added
   - Perfect scrollbar (https://github.com/mdbootstrap/perfect-scrollbar)
   - Switch reverse (`_switch-reverse.scss`) for the switch in the main page
