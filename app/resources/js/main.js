@@ -80,23 +80,63 @@ const page = {
 const data = [
 	{
 		day: "Mon",
-		description: "Lorem ipsum 1"
+		description: "Lorem ipsum dolor sit"
 	},
 	{
 		day: "Tue",
-		description: "Lorem ipsum 2"
+		description: "Lorem ipsum dolor sit"
 	},
 	{
 		day: "Wed",
-		description: "Lorem ipsum 3"
+		description: "Lorem ipsum dolor sit"
 	},
 	{
 		day: "Thu",
-		description: "Lorem ipsum 4"
+		description: "Lorem ipsum dolor sit"
 	},
 	{
 		day: "Fri",
-		description: "Lorem ipsum 5"
+		description: "Lorem ipsum dolor sit"
+	},
+	{
+		day: "Mon",
+		description: "Lorem ipsum dolor sit"
+	},
+	{
+		day: "Tue",
+		description: "Lorem ipsum dolor sit"
+	},
+	{
+		day: "Wed",
+		description: "Lorem ipsum dolor sit"
+	},
+	{
+		day: "Thu",
+		description: "Lorem ipsum dolor sit"
+	},
+	{
+		day: "Fri",
+		description: "Lorem ipsum dolor sit"
+	},
+	{
+		day: "Mon",
+		description: "Lorem ipsum dolor sit"
+	},
+	{
+		day: "Tue",
+		description: "Lorem ipsum dolor sit"
+	},
+	{
+		day: "Wed",
+		description: "Lorem ipsum dolor sit"
+	},
+	{
+		day: "Thu",
+		description: "Lorem ipsum dolor sit"
+	},
+	{
+		day: "Fri",
+		description: "Lorem ipsum dolor sit"
 	}
 ];
 
@@ -260,6 +300,9 @@ function initializeSettings() {
 function initializeMain() {
 	const container = $(".main-content .contents");
 
+	// Initialize scrollbar
+	new PerfectScrollbar("#list-scrollbar", { wheelPropagation: false });
+
 	// Folder click listener
 	const activeImageSrc = "resources/assets/icons/folder-white.svg";
 	const inactiveImageSrc = "resources/assets/icons/folder-gray.svg";
@@ -287,7 +330,7 @@ function initializeMain() {
 		const item = $(".cloneable");
 
 		// Remove items in Folder Contents list
-		container.find(".list").empty();
+		container.find("#list-scrollbar").empty();
 
 		// If query is supplied, filter the list
 		data.forEach(({ day, description }, index) => {
@@ -383,11 +426,19 @@ function initializeMain() {
 		.on("pick.datepicker", function(e) {
 			// Get date
 			const day = e.date.getDate();
-			const month = $(this).datepicker("getMonthName", true);
+			const month = $(this).datepicker("getMonthName");
 			const year = e.date.getFullYear();
 
 			// Set date
-			$(this).text(`${month} ${day} ${year}`);
+			$(this)
+				.find(".day")
+				.text(day);
+			$(this)
+				.find(".month")
+				.text(month);
+			$(this)
+				.find(".year")
+				.text(year);
 			e.preventDefault();
 		});
 	$('[data-toggle="datepicker"]').datepicker("pick");

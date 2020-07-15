@@ -32,7 +32,7 @@
 }
 
 .text-blue {
-  color: #1673ff;
+  color: #4784fa;
 }
 
 .text-red {
@@ -56,7 +56,7 @@
 }
 
 .bg-blue {
-  background-color: #1673ff;
+  background-color: #4784fa;
 }
 
 .bg-red {
@@ -91,8 +91,8 @@ html {
 }
 
 body {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 
 .Box {
@@ -102,18 +102,18 @@ body {
   border-radius: 30px;
 }
 
-.Switch {
+.SwitchReverse {
   position: relative;
   display: inline-block;
   width: 50px;
   height: 25px;
 }
-.Switch input {
+.SwitchReverse input {
   opacity: 0;
   width: 0;
   height: 0;
 }
-.Switch .slider {
+.SwitchReverse .slider {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -125,33 +125,33 @@ body {
   transition: 0.4s;
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
-.Switch .slider:before {
+.SwitchReverse .slider:before {
   position: absolute;
   content: "";
   height: 18px;
   width: 18px;
   left: 3px;
   bottom: 3px;
-  background-color: white;
+  background-color: #e2e2e2;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  transform: translateX(14px);
 }
-.Switch .slider.slider.round {
+.SwitchReverse .slider.slider.round {
   border-radius: 25px;
+  background-color: white;
 }
-.Switch .slider.slider.round.round:before {
+.SwitchReverse .slider.slider.round.round:before {
   border-radius: 50%;
 }
-.Switch input:checked + .slider {
+.SwitchReverse input:checked + .slider:before {
   background-color: #26c296;
 }
-.Switch input:focus + .slider {
+.SwitchReverse input:focus + .slider {
   box-shadow: 0 0 1px #26c296;
 }
-.Switch input:checked + .slider:before {
-  -webkit-transform: translateX(24px);
-  -ms-transform: translateX(24px);
-  transform: translateX(24px);
+.SwitchReverse input:checked + .slider:before {
+  transform: translateX(0);
 }
 
 .CircularCheckbox label {
@@ -179,7 +179,7 @@ body {
   flex-shrink: 0;
 }
 .CircularCheckbox input[type=checkbox]:checked + label:before {
-  background-color: #1673ff;
+  background-color: #4784fa;
 }
 .CircularCheckbox .sound-signal label {
   display: inline-flex;
@@ -195,7 +195,7 @@ body {
   font-family: "Proxima Nova";
   font-size: 15px;
   font-weight: 400;
-  padding: 2px 10px;
+  padding: 4px 10px;
   color: #333333;
   background-color: #e6e6e6;
   border-radius: 4px;
@@ -332,49 +332,64 @@ body {
   }
 }
 .Main {
-  padding: 30px 40px 10px;
+  padding: 20px 40px 0;
   min-width: 100%;
   min-height: 100%;
   background-color: #f4f8ff;
 }
 .Main .header {
   width: 100%;
-  display: flex;
-  justify-content: stretch;
-  align-items: flex-end;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 0.3fr 0.7fr;
+  column-gap: 40px;
 }
 .Main .header .logo {
-  flex: 1;
+  flex-basis: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
 }
 .Main .header .logo img {
   height: 50px;
 }
 .Main .header .configuration {
-  margin-right: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-direction: row;
+}
+.Main .header .configuration #search {
+  width: 130px;
+  padding: 4px 10px;
+  background-color: #fff;
+  text-align: center;
+  border: 1px solid #e6e6e6;
+  border-radius: 20px;
+  outline: 0;
+  font-family: "Proxima Nova";
+  font-size: 14px;
+  font-weight: 400;
+}
+.Main .header .configuration #search::placeholder {
+  color: #333333;
 }
 .Main .header .configuration .switch-container {
   display: flex;
   justify-content: stretch;
   align-items: center;
   flex-direction: row;
-  margin-left: 10px;
 }
-.Main .header .configuration .switch-container .Switch {
+.Main .header .configuration .switch-container .SwitchReverse {
   width: 35px;
-  height: 17px;
+  height: 18px;
   margin: 0 8px;
 }
-.Main .header .configuration .switch-container .Switch .slider:before {
+.Main .header .configuration .switch-container .SwitchReverse .slider:before {
   height: 12px;
   width: 12px;
   left: 3px;
   bottom: 2px;
-}
-.Main .header .configuration .switch-container .Switch input:checked + .slider:before {
-  -webkit-transform: translateX(14px);
-  -ms-transform: translateX(14px);
-  transform: translateX(14px);
 }
 .Main .header .configuration .switch-container .switch-value {
   font-family: "Proxima Nova";
@@ -384,25 +399,59 @@ body {
 }
 .Main .header .configuration .kleeboard {
   font-family: "Proxima Nova";
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 400;
-  margin-top: 10px;
+  margin-top: 8px;
   display: block;
 }
-.Main .header .configuration .date {
+.Main .header .configuration .date-container {
+  margin-top: 8px;
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  flex-direction: row;
+}
+.Main .header .configuration .date-container .date {
+  margin-left: -15px;
+  padding: 1px 10px 4px;
+  border: 1px solid #e6e6e6;
+  background-color: white;
+  display: block;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.Main .header .configuration .date-container .date .date-text {
+  font-family: "Proxima Nova";
+  font-size: 14px;
+  font-weight: 400;
+}
+.Main .header .configuration .date-container .date .date-text.day {
+  padding: 0 5px;
+  border-left: 1px solid #e6e6e6;
+  border-right: 1px solid #e6e6e6;
+}
+.Main .header .configuration .date-container .date .arrow-icon {
+  height: 10px;
+  width: 10px;
+  margin-left: 5px;
+  margin-bottom: -1px;
+}
+.Main .header .configuration .date-container .btn-today {
+  height: 25px;
+  padding: 0 10px;
+  margin-left: 10px;
+  background-color: #4784fa;
+  color: white;
+  border: 0;
+  border-radius: 20px;
   font-family: "Proxima Nova";
   font-size: 13px;
   font-weight: 400;
-  margin-top: 2px;
-  display: block;
-  cursor: pointer;
 }
-.Main .header .configuration .date .arrow-icon {
-  height: 10px;
-  width: 10px;
-  margin-left: 10px;
+.Main .header .configuration .user {
+  align-self: center;
 }
-.Main .header .user .container {
+.Main .header .configuration .user .container {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -413,38 +462,38 @@ body {
   border-bottom-right-radius: 7px;
   width: 80px;
   padding: 6px 8px;
-  background-color: #e6e6e6;
+  background-color: #e2e2e2;
   cursor: pointer;
 }
-.Main .header .user .avatar {
+.Main .header .configuration .user .avatar {
   width: 33px;
   height: 33px;
   border: 2px solid white;
   border-radius: 50%;
 }
-.Main .header .user .arrow-icon {
+.Main .header .configuration .user .arrow-icon {
   height: 10px;
   width: 10px;
   margin-top: 5px;
   margin-left: 15px;
 }
 .Main .main-content {
-  display: flex;
-  justify-content: stretch;
-  align-items: flex-start;
-  flex-direction: row;
-  margin-top: 5px;
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: 0.3fr 0.7fr;
+  column-gap: 40px;
 }
-.Main .main-content .folders {
-  flex-basis: 30%;
-  padding-top: 48px;
-  padding-right: 20px;
+.Main .main-content .folders .wrapper {
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid #e6e6e6;
 }
 .Main .main-content .folders .btn-new-folder {
   font-family: "Proxima Nova";
   font-size: 15px;
   font-weight: 400;
-  padding: 2px 10px;
+  padding: 4px 10px;
   color: white;
   background-color: #26c296;
   border-radius: 4px;
@@ -454,6 +503,10 @@ body {
   transition: 150ms;
   text-align: center;
   text-decoration: none;
+  display: block;
+  border-radius: 0;
+  border-top-right-radius: 12px;
+  border-bottom-left-radius: 12px;
 }
 .Main .main-content .folders .btn-new-folder:hover {
   transition: 150ms;
@@ -470,14 +523,13 @@ body {
   align-items: center;
   flex-direction: row;
   padding: 2px 5px;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 .Main .main-content .folders .list .item.active .title {
   flex: none;
-  background-color: #1673ff;
+  background-color: #4784fa;
   color: white;
-  border-radius: 8px;
-  opacity: 0.8;
+  border-radius: 20px;
 }
 .Main .main-content .folders .list .item .CircularCheckbox label:before {
   margin-bottom: 0;
@@ -488,9 +540,9 @@ body {
   align-items: center;
   flex-direction: row;
   font-family: "Proxima Nova";
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
-  color: #a1a1a1;
+  color: #666666;
   padding: 3px 10px;
   flex: 1;
 }
@@ -499,9 +551,13 @@ body {
 }
 .Main .main-content .folders #folder-bulk-actions {
   margin-top: 30px;
+  margin-bottom: 9px;
 }
 .Main .main-content .folders #folder-bulk-actions .button {
-  background-color: #e6e6e6;
+  text-align: left;
+  display: block;
+  background-color: #4784fa;
+  color: white;
 }
 .Main .main-content .folders .btn-settings {
   display: flex;
@@ -511,7 +567,7 @@ body {
   font-family: "Proxima Nova";
   font-size: 15px;
   font-weight: 400;
-  padding: 2px 10px;
+  padding: 4px 10px;
   color: #858585;
   background-color: transparent;
   border-radius: 4px;
@@ -522,51 +578,38 @@ body {
   text-align: center;
   text-decoration: none;
   font-family: "Proxima Nova";
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 400;
-  margin-top: 25px;
+  margin-top: 5px;
   padding: 2px 0;
-  opacity: 1;
 }
 .Main .main-content .folders .btn-settings:hover {
   transition: 150ms;
   opacity: 0.7;
 }
 .Main .main-content .folders .btn-settings svg {
-  fill: #858585;
-  width: 25px;
-  height: 25px;
+  fill: #969696;
+  width: 40px;
+  height: 40px;
   margin-right: 10px;
 }
-.Main .main-content .contents {
-  flex-basis: 70%;
-}
-.Main .main-content .contents #search {
-  width: 130px;
-  padding: 4px 10px;
-  background-color: #e6e6e6;
-  text-align: center;
-  border: 0;
-  border-radius: 20px;
-  outline: 0;
-  font-family: "Proxima Nova";
-  font-size: 14px;
-  font-weight: 400;
-}
-.Main .main-content .contents #search::placeholder {
-  color: #333333;
-}
 .Main .main-content .contents .list {
-  margin-top: 15px;
+  padding: 15px 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid #e6e6e6;
+  position: relative;
+  height: 337px;
 }
 .Main .main-content .contents .list .item {
-  margin-top: 20px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: row;
-  padding: 2px 5px;
-  border-radius: 4px;
+  border-radius: 5px;
+}
+.Main .main-content .contents .list .item:not(:first-child) {
+  margin-top: 20px;
 }
 .Main .main-content .contents .list .item .date {
   width: 30px;
@@ -608,12 +651,12 @@ body {
 }
 .Main .main-content .contents .list .item .action-buttons .btn-copy {
   border: 0;
-  border-radius: 4px;
+  border-radius: 5px;
   margin-left: 5px;
   font-family: "Proxima Nova";
   font-size: 15px;
   font-weight: 400;
-  padding: 2px 10px;
+  padding: 4px 10px;
   color: white;
   background-color: #26c296;
   border-radius: 4px;
@@ -631,14 +674,14 @@ body {
 }
 .Main .main-content .contents .list .item .action-buttons .btn-more-settings {
   border: 0;
-  border-radius: 4px;
+  border-radius: 5px;
   margin-left: 5px;
   font-family: "Proxima Nova";
   font-size: 15px;
   font-weight: 400;
-  padding: 2px 10px;
+  padding: 4px 10px;
   color: #333333;
-  background-color: #1673ff;
+  background-color: #4784fa;
   border-radius: 4px;
   border: 0;
   outline: 0;
@@ -646,6 +689,7 @@ body {
   transition: 150ms;
   text-align: center;
   text-decoration: none;
+  display: inline-block;
 }
 .Main .main-content .contents .list .item .action-buttons .btn-more-settings:hover {
   transition: 150ms;
@@ -653,12 +697,12 @@ body {
 }
 .Main .main-content .contents .list .item .action-buttons .btn-remove {
   border: 0;
-  border-radius: 4px;
+  border-radius: 5px;
   margin-left: 5px;
   font-family: "Proxima Nova";
   font-size: 15px;
   font-weight: 400;
-  padding: 2px 10px;
+  padding: 4px 10px;
   color: #333333;
   background-color: #f9c546;
   border-radius: 4px;
@@ -681,11 +725,13 @@ body {
   z-index: 2;
 }
 .Main .main-content .contents #content-bulk-actions {
-  margin-top: 25px;
-  margin-left: 62px;
+  margin-top: 15px;
 }
 .Main .main-content .contents #content-bulk-actions .button {
-  background-color: #1673ff;
+  width: 180px;
+  display: inline-block;
+  background-color: #4784fa;
+  text-align: left;
   color: white;
 }
 .Main .main-content .contents #content-bulk-actions .dropdown-panel {
@@ -730,7 +776,7 @@ body {
   font-family: "Proxima Nova";
   font-size: 15px;
   font-weight: 400;
-  padding: 2px 10px;
+  padding: 4px 10px;
   color: white;
   background-color: #26c296;
   border-radius: 4px;
@@ -750,7 +796,7 @@ body {
   font-family: "Proxima Nova";
   font-size: 15px;
   font-weight: 400;
-  padding: 2px 10px;
+  padding: 4px 10px;
   color: #333333;
   background-color: #f9c546;
   border-radius: 4px;
@@ -776,7 +822,7 @@ body {
 }
 #modal-new-folder .actions input {
   padding: 4px;
-  border-radius: 4px;
+  border-radius: 5px;
   outline: 0;
   border: 1px solid #e6e6e6;
   flex: 1;
@@ -788,9 +834,9 @@ body {
   font-family: "Proxima Nova";
   font-size: 15px;
   font-weight: 400;
-  padding: 2px 10px;
+  padding: 4px 10px;
   color: white;
-  background-color: #1673ff;
+  background-color: #4784fa;
   border-radius: 4px;
   border: 0;
   outline: 0;
@@ -869,7 +915,7 @@ body {
   font-family: "Proxima Nova";
   font-size: 15px;
   font-weight: 400;
-  padding: 2px 10px;
+  padding: 4px 10px;
   color: #333333;
   background-color: #e6e6e6;
   border-radius: 4px;
@@ -889,7 +935,7 @@ body {
   font-family: "Proxima Nova";
   font-size: 15px;
   font-weight: 400;
-  padding: 2px 10px;
+  padding: 4px 10px;
   color: white;
   background-color: #26c296;
   border-radius: 4px;

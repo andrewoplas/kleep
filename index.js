@@ -1,6 +1,6 @@
 "use strict";
 const path = require("path");
-const { app, BrowserWindow, Menu } = require("electron");
+const { app, BrowserWindow, Menu, ipcMain } = require("electron");
 /// const {autoUpdater} = require('electron-updater');
 const { is } = require("electron-util");
 const unhandled = require("electron-unhandled");
@@ -25,7 +25,7 @@ const createMainWindow = async () => {
 	const win = new BrowserWindow({
 		title: app.name,
 		show: false,
-		width: 700,
+		width: 800,
 		height: 600,
 		backgroundColor: "#f4f8ff"
 	});
@@ -38,6 +38,10 @@ const createMainWindow = async () => {
 		// Dereference the window
 		// For multiple windows store them in an array
 		mainWindow = undefined;
+	});
+
+	ipcMain.on("resize-main", (event, arg) => {
+		mainWindow.setSize(800, 540);
 	});
 
 	await win.loadFile(path.join(__dirname, `${appPath}/${mainPage}.html`));

@@ -32,7 +32,7 @@
 }
 
 .text-blue {
-  color: #1673ff;
+  color: #4784fa;
 }
 
 .text-red {
@@ -56,7 +56,7 @@
 }
 
 .bg-blue {
-  background-color: #1673ff;
+  background-color: #4784fa;
 }
 
 .bg-red {
@@ -91,8 +91,8 @@ html {
 }
 
 body {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 
 .Box {
@@ -133,7 +133,7 @@ body {
   margin-right: 10px;
   height: 22px;
   width: 22px;
-  border: 1px solid #1673ff;
+  border: 1px solid #4784fa;
   display: inline-block;
   position: relative;
 }

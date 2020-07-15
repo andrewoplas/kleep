@@ -14,6 +14,10 @@
 			rel="stylesheet"
 			href="resources/vendor/datepicker/datepicker.min.css"
 		/>
+		<link
+			rel="stylesheet"
+			href="resources/vendor/perfect-scrollbar/css/perfect-scrollbar.css"
+		/>
 
 		<!-- Custom CSS -->
 		<link rel="stylesheet" href="resources/css/normalize.css" />
@@ -31,41 +35,54 @@
 
 				<!-- Column: Configuration -->
 				<div class="configuration">
-					<!-- Switch -->
-					<div class="switch-container">
-						<span class="switch-value">off</span>
-						<label class="Switch">
-							<input type="checkbox" />
-							<span class="slider round"></span>
-						</label>
-						<span class="switch-value">on</span>
+					<!-- Search Input -->
+					<input type="text" id="search" placeholder="Search" />
+
+					<div class="center">
+						<!-- Switch -->
+						<div class="switch-container">
+							<span class="switch-value">On</span>
+							<label class="SwitchReverse">
+								<input type="checkbox" />
+								<span class="slider round"></span>
+							</label>
+							<span class="switch-value">Off</span>
+						</div>
+
+						<!-- Title -->
+						<span class="kleeboard">Kleeboard</span>
+
+						<div class="date-container">
+							<!-- Date -->
+							<span
+								class="date"
+								id="datepicker-trigger"
+								data-toggle="datepicker"
+							>
+								<span class="date-text month">June</span>
+								<span class="date-text day">05</span>
+								<span class="date-text year">2020</span>
+								<img
+									class="arrow-icon"
+									src="resources/assets/icons/arrow-down.svg"
+								/>
+							</span>
+							<button class="btn-today">Today</button>
+						</div>
 					</div>
 
-					<!-- Title -->
-					<span class="kleeboard">Kleeboard</span>
-
-					<!-- Date -->
-					<span class="date" id="datepicker-trigger">
-						<span data-toggle="datepicker"></span>
-
-						<img
-							class="arrow-icon"
-							src="resources/assets/icons/arrow-down.svg"
-						/>
-					</span>
-				</div>
-
-				<!-- Column: User Configuration -->
-				<div class="user">
-					<a href="popup-user-info.html" target="_blank">
-						<div class="container">
-							<img class="avatar" src="resources/assets/images/profile.jpg" />
-							<img
-								class="arrow-icon"
-								src="resources/assets/icons/arrow-down-white.svg"
-							/>
-						</div>
-					</a>
+					<!-- Column: User Configuration -->
+					<div class="user">
+						<a href="popup-user-info.html" target="_blank">
+							<div class="container">
+								<img class="avatar" src="resources/assets/images/profile.jpg" />
+								<img
+									class="arrow-icon"
+									src="resources/assets/icons/arrow-down-white.svg"
+								/>
+							</div>
+						</a>
+					</div>
 				</div>
 			</div>
 
@@ -73,181 +90,167 @@
 			<div class="main-content">
 				<!-- Folders -->
 				<div class="folders">
-					<!-- New Folder -->
-					<!-- href targets the New Folder Modal by supplying the modal's id -->
-					<a class="btn-new-folder" href="#modal-new-folder" rel="modal:open"
-						>+ New Folder
-					</a>
+					<div class="wrapper">
+						<!-- New Folder -->
+						<!-- href targets the New Folder Modal by supplying the modal's id -->
+						<a class="btn-new-folder" href="#modal-new-folder" rel="modal:open"
+							>+ New Folder
+						</a>
 
-					<!-- List of Folders -->
-					<div class="list">
-						<!-- Folder Item -->
-						<div class="item">
-							<!-- Checkbox -->
-							<div class="CircularCheckbox">
-								<!-- Checkbox `id` and Label `for` must be the same and must be unique from other items -->
-								<input type="checkbox" id="folder-id-1" />
-								<!-- Checkbox `id` and Label `for` must be the same and must be unique from other items -->
-								<label for="folder-id-1"> </label>
-							</div>
+						<!-- List of Folders -->
+						<div class="list">
+							<!-- Folder Item -->
+							<div class="item">
+								<!-- Checkbox -->
+								<div class="CircularCheckbox">
+									<!-- Checkbox `id` and Label `for` must be the same and must be unique from other items -->
+									<input type="checkbox" id="folder-id-1" />
+									<!-- Checkbox `id` and Label `for` must be the same and must be unique from other items -->
+									<label for="folder-id-1"> </label>
+								</div>
 
-							<!-- Folder name -->
-							<span class="title">
-								<img
-									src="resources/assets/icons/folder-gray.svg"
-									width="25"
-									height="25"
-								/>
-								Folder
-							</span>
-						</div>
-
-						<!-- Folder Item : Active -->
-						<div class="item active">
-							<div class="CircularCheckbox">
-								<input type="checkbox" id="folder-id-2" />
-								<label for="folder-id-2"> </label>
-							</div>
-							<span class="title">
-								<img
-									src="resources/assets/icons/folder-white.svg"
-									width="25"
-									height="25"
-								/>
-								Folder
-							</span>
-						</div>
-
-						<!-- Folder Item -->
-						<div class="item">
-							<div class="CircularCheckbox">
-								<input type="checkbox" id="folder-id-3" />
-								<label for="folder-id-3"> </label>
-							</div>
-							<span class="title">
-								<img
-									src="resources/assets/icons/folder-gray.svg"
-									width="25"
-									height="25"
-								/>
-								Folder
-							</span>
-						</div>
-
-						<!-- Folder Item -->
-						<div class="item">
-							<div class="CircularCheckbox">
-								<input type="checkbox" id="folder-id-4" />
-								<label for="folder-id-4"> </label>
-							</div>
-							<span class="title">
-								<img
-									src="resources/assets/icons/folder-gray.svg"
-									width="25"
-									height="25"
-								/>
-								Folder
-							</span>
-						</div>
-
-						<!-- Folder Item -->
-						<div class="item">
-							<div class="CircularCheckbox">
-								<input type="checkbox" id="folder-id-5" />
-								<label for="folder-id-5"> </label>
-							</div>
-							<span class="title">
-								<img
-									src="resources/assets/icons/folder-gray.svg"
-									width="25"
-									height="25"
-								/>
-								Folder
-							</span>
-						</div>
-
-						<!-- Folder Item -->
-						<div class="item">
-							<div class="CircularCheckbox">
-								<input type="checkbox" id="folder-id-6" />
-								<label for="folder-id-6"> </label>
-							</div>
-							<span class="title">
-								<img
-									src="resources/assets/icons/folder-gray.svg"
-									width="25"
-									height="25"
-								/>
-								Folder
-							</span>
-						</div>
-					</div>
-
-					<!-- Folder Bulk Actions -->
-					<ul class="dropdown-menu" id="folder-bulk-actions">
-						<li>
-							<a class="button has-arrow" href="javascript:void(0)">
-								Bulk Actions
-							</a>
-
-							<!-- Menu -->
-							<ul class="dropdown-panel">
-								<li>
+								<!-- Folder name -->
+								<span class="title">
 									<img
 										src="resources/assets/icons/folder-gray.svg"
-										width="20"
-										height="20"
+										width="22"
+										height="22"
 									/>
-									Archive
-								</li>
-								<li>
-									<a
-										class="modal-button"
-										href="#modal-delete-confirmation"
-										rel="modal:open"
-									>
+									Folder
+								</span>
+							</div>
+
+							<!-- Folder Item : Active -->
+							<div class="item active">
+								<div class="CircularCheckbox">
+									<input type="checkbox" id="folder-id-2" />
+									<label for="folder-id-2"> </label>
+								</div>
+								<span class="title">
+									<img
+										src="resources/assets/icons/folder-white.svg"
+										width="22"
+										height="22"
+									/>
+									Folder
+								</span>
+							</div>
+
+							<!-- Folder Item -->
+							<div class="item">
+								<div class="CircularCheckbox">
+									<input type="checkbox" id="folder-id-3" />
+									<label for="folder-id-3"> </label>
+								</div>
+								<span class="title">
+									<img
+										src="resources/assets/icons/folder-gray.svg"
+										width="22"
+										height="22"
+									/>
+									Folder
+								</span>
+							</div>
+
+							<!-- Folder Item -->
+							<div class="item">
+								<div class="CircularCheckbox">
+									<input type="checkbox" id="folder-id-4" />
+									<label for="folder-id-4"> </label>
+								</div>
+								<span class="title">
+									<img
+										src="resources/assets/icons/folder-gray.svg"
+										width="22"
+										height="22"
+									/>
+									Folder
+								</span>
+							</div>
+
+							<!-- Folder Item -->
+							<div class="item">
+								<div class="CircularCheckbox">
+									<input type="checkbox" id="folder-id-5" />
+									<label for="folder-id-5"> </label>
+								</div>
+								<span class="title">
+									<img
+										src="resources/assets/icons/folder-gray.svg"
+										width="22"
+										height="22"
+									/>
+									Folder
+								</span>
+							</div>
+						</div>
+
+						<!-- Folder Bulk Actions -->
+						<ul class="dropdown-menu" id="folder-bulk-actions">
+							<li>
+								<a class="button has-arrow" href="javascript:void(0)">
+									Bulk Actions
+								</a>
+
+								<!-- Menu -->
+								<ul class="dropdown-panel">
+									<li>
 										<img
-											src="resources/assets/icons/trash-gray.svg"
+											src="resources/assets/icons/folder-gray.svg"
 											width="20"
 											height="20"
 										/>
-										Delete
-									</a>
-								</li>
-								<li>
-									<a
-										class="modal-button"
-										href="#modal-color-selection"
-										rel="modal:open"
-										value="folder-bulk"
-									>
+										Archive
+									</li>
+									<li>
+										<a
+											class="modal-button"
+											href="#modal-delete-confirmation"
+											rel="modal:open"
+										>
+											<img
+												src="resources/assets/icons/trash-gray.svg"
+												width="20"
+												height="20"
+											/>
+											Delete
+										</a>
+									</li>
+									<li>
+										<a
+											class="modal-button"
+											href="#modal-color-selection"
+											rel="modal:open"
+											value="folder-bulk"
+										>
+											<img
+												src="resources/assets/icons/circle-gray.svg"
+												width="17"
+												height="17"
+											/>
+											Color Code
+										</a>
+									</li>
+									<li>
 										<img
-											src="resources/assets/icons/circle-gray.svg"
-											width="17"
-											height="17"
+											src="resources/assets/icons/clock-gray.svg"
+											width="18"
+											height="18"
 										/>
-										Color Code
-									</a>
-								</li>
-								<li>
-									<img
-										src="resources/assets/icons/clock-gray.svg"
-										width="18"
-										height="18"
-									/>
-									Reminder
-								</li>
-								<li>
-									<img
-										src="resources/assets/icons/folder-gray.svg"
-										width="20"
-										height="20"
-									/>
-									Move to folder
-								</li>
-							</ul>
-						</li>
-					</ul>
+										Reminder
+									</li>
+									<li>
+										<img
+											src="resources/assets/icons/folder-gray.svg"
+											width="20"
+											height="20"
+										/>
+										Move to folder
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
 
 					<!-- Settings Button -->
 					<a class="btn-settings" href="popup-settings.html" target="_blank">
@@ -273,11 +276,8 @@
 
 				<!-- Folder Contents -->
 				<div class="contents">
-					<!-- Search Input -->
-					<input type="text" id="search" placeholder="Search" />
-
 					<!-- Contents : Dynamically inserted. Please check the JS file to see how it was inserted -->
-					<div class="list"></div>
+					<div class="list" id="list-scrollbar"></div>
 
 					<!-- Folder Contents Bulk Actions -->
 					<ul class="dropdown-menu" id="content-bulk-actions">
@@ -514,6 +514,7 @@
 		<script src="resources/vendor/metis-menu/dist/metismenujs.min.js"></script>
 		<script src="resources/vendor/modal/modal.min.js"></script>
 		<script src="resources/vendor/datepicker/datepicker.min.js"></script>
+		<script src="resources/vendor/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
 
 		<!-- Custom JS -->
 		<script src="resources/js/main.js"></script>
