@@ -442,6 +442,9 @@ function initializeMain() {
 			e.preventDefault();
 		});
 	$('[data-toggle="datepicker"]').datepicker("pick");
+	$(".btn-today").click(function() {
+		$("#datepicker-trigger").datepicker("setDate", new Date());
+	});
 
 	// Initialize listeners for Colors Selection Modal
 	colorsSelectionModal();
